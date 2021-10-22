@@ -20,6 +20,9 @@ then
 fi
 
 
+dnf install -y powertop tlp
+
+
 # Ensure that the dracut image can handle resume from hibernation.
 # See: man dracut.conf
 # See: https://www.ctrl.blog/entry/fedora-hibernate.html
@@ -128,7 +131,6 @@ EOF
 # Apply the settings.  Any logged-in GNOME user will need to logout (but not reboot) to have them take effect.
 dracut -f
 grub2-mkconfig -o /boot/grub2/grub.cfg
-dnf install -y powertop tlp
 systemctl enable --now fstrim.timer
 systemctl enable --now powertop
 systemctl enable --now tlp
